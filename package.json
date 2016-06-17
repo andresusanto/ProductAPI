@@ -1,0 +1,28 @@
+{
+  "name": "product-api",
+  "version": "0.0.1",
+  "description": "Simple API for products and categories management",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/andresusanto/ProductAPI.git"
+  },
+  "keywords": [
+    "product",
+    "api"
+  ],
+  "author": "Andre Susanto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andresusanto/ProductAPI/issues"
+  },
+  "homepage": "https://github.com/andresusanto/ProductAPI#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0"
+  }
+}

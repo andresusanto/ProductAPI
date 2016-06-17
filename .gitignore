@@ -1,3 +1,6 @@
+# IDEA ide
+.idea
+
 # env variable
 .env
 # Logs
@@ -37,3 +40,4 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+

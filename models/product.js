@@ -41,7 +41,7 @@ var productSchema = new mongoose.Schema({
             validator: function(v, cb) {
                 if (v instanceof Array && v.length > 0){
                     Category.find({_id: {$in: v}}, function(err, result){
-                        if (result) cb(true);
+                        if (result instanceof Array && result.length != 0) cb(true);
                         else cb(false);
                     })
                 } else {

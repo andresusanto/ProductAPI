@@ -313,7 +313,7 @@ describe('Category Endpoints', function() {
                 });
         });
 
-        it('should not return error on invalid ID Format', function(done) {
+        it('should get error on invalid ID Format', function(done) {
             request(config.HTTP_ADDRESS)
                 .get('/category/123') // the first root category we've created before
                 .set('API-KEY', config.TEST_VALID_API_KEY)
@@ -607,6 +607,37 @@ describe('Category Endpoints', function() {
 
     // Test endpoint that deletes categories
     describe('DELETE /category/:categoryId', function() {
+
+        describe('Request with Invalid Data', function() {
+
+            it('should get reference error on missing input id reference', function(done) {
+                request(config.HTTP_ADDRESS)
+                    .delete('/category/555555c55a777b1111a99999')
+                    .set('API-KEY', config.TEST_VALID_API_KEY)
+                    .expect(400)
+                    .end(function (err, res) {
+                        if (err) return done(err);
+
+                        res.body.code.should.equal(codes.REFERENCE_ERROR);
+                        return done();
+                    });
+            });
+
+            it('should get cast error on invalid id format', function(done) {
+                request(config.HTTP_ADDRESS)
+                    .delete('/category/123')
+                    .set('API-KEY', config.TEST_VALID_API_KEY)
+                    .expect(500)
+                    .end(function (err, res) {
+                        if (err) return done(err);
+
+                        res.body.code.should.equal(codes.OPERATION_ERROR);
+                        res.body.errors.name.should.equal('CastError');
+                        return done();
+                    });
+            });
+
+        });
 
         describe('Prevent Delete because Data Integrity Violation', function() {
 

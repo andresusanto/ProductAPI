@@ -6,6 +6,7 @@
 
 module.exports = {
     HTTP_ADDRESS : 'http://localhost:3000',
+    
     TEST_VALID_API_KEY : 'YW5kcmUgc3VzYW50byBnYW50ZW5nIGJhbmdldA==',
     TEST_INVALID_API_KEYS_NUM : 2, // numbers of invalid keys that would be generated to test the api
     TEST_ENDPOINTS: [ // we should check all endpoints for invalid api keys

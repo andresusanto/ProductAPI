@@ -13,7 +13,7 @@ This resource returns all categories along with their children (also their child
 (None)
 
 #### Example Request
-```
+```http
 GET /categories HTTP/1.1
 Host: backend.someserver.com:3000
 API-KEY: sAmPlEA=piK3Y

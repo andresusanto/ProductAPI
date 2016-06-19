@@ -10,82 +10,21 @@ This API provides common codes (int) to indicate more detailed request status. T
 | Code | Name | Description |
 | --- | --- | --- |
 | 99 | UNAUTHORIZED | Unauthorized access to API. This is caused by invalid `API-KEY` token |
-| 98 | VALIDATION ERROR | User input did not pass validation process. This is caused by invalid request data (did not meet constraint) |
+| 98 | VALIDATION ERROR | User input did not pass validation process. This is caused by invalid input request data (did not meet constraint). |
+| 97 | REFERENCE ERROR | Reference (ID) that is supplied in request is missing (can't be found in database). |
+| 96 | CONTENT REQUIRED | Invalid body request (usually caused by broken json). |
+| 95 | OPERATION ERROR | Error that is thrown while operating request. Usually because of errors in data casting or internal server errors |
+| 94 | DEPENDENCY ERROR CHILD | Requested operation (delete) is rejected as it would cause data integrity violation as the category still has child(ren). |
+| 93 | DEPENDENCY ERROR PRODUCT | Requested operation (delete) is rejected as it would cause data integrity violation as the category still has product(s). |
 
 
 ## Categories
 All resources related to categories.
 
-### GET /categories
-This resource returns all categories along with their children (also their children) in a tree format.
-
-#### Resource Information
-| Name | Description |
-| --- | --- |
-| HTTP Method | GET |
-| Resource URL | /categories |
-| Format (input and output) | JSON |
-| Authentication | Yes, API-KEY Token |
-
-#### Parameters
-(None)
-
-#### Example Request
-
-
-#### Example Result
-
-```json
-{
-  "code": 0,
-  "message": "The requested operation executed successfully.",
-  "categories": [
-    {
-      "children": [
-        {
-          "children": [],
-          "_id": "576675997b30e35010ebd6d4",
-          "name": "Celana Jeans",
-          "description": "Koleksi celana jeans paling lengkap dan update",
-          "parent": "576675997b30e35010ebd6d2",
-          "__v": 0
-        }
-      ],
-      "_id": "576675997b30e35010ebd6d2",
-      "name": "Celana",
-      "description": "Koleksi celana paling lengkap dan update",
-      "__v": 0
-    },
-    {
-      "children": [
-        {
-          "children": [],
-          "_id": "576675997b30e35010ebd6d5",
-          "name": "Kaos",
-          "description": "Koleksi macam-macam kaos",
-          "parent": "576675997b30e35010ebd6d3",
-          "__v": 0
-        }
-      ],
-      "_id": "576675997b30e35010ebd6d3",
-      "name": "Pakaian",
-      "__v": 0
-    },
-    {
-      "children": [
-        {
-          "children": [],
-          "_id": "576675997b30e35010ebd6db",
-          "name": "Pakaian Keren",
-          "parent": "576675997b30e35010ebd6da",
-          "__v": 0
-        }
-      ],
-      "_id": "576675997b30e35010ebd6da",
-      "name": "Pakaian",
-      "description": "Koleksi celana paling lengkap dan update",
-      "__v": 0
-    }
-  ]
-}
-```
+1. [GET /categories](categories/findCategories.md) - Get all categories as well as their children in a tree format.
+2. [PUT /category](categories/createCategory.md) - Create a new category
+3. [GET /category/:categoryId](categories/getCategoryById.md) - Get a category (as well as their children) that is specified by category id.
+4. [POST /category/:categoryId](categories/updateCategory.md) - Update a category that is specified by category id.
+5. [DELETE /category/:categoryId](categories/deleteCategory.md) - Delete a category
+6. [GET /category/:categoryId/products](categories/getCategoryProducts.md) - Get products inside a category
+7. [GET /categories/cleanup](categories/cleanUp.md) - **Clean all categories in database**

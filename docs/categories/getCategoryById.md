@@ -23,7 +23,7 @@ Cache-Control: no-cache
 
 
 #### Example Result
-**Successful Deletion:**
+**Successful Request:**
 
 ```json
 {
@@ -48,7 +48,7 @@ Cache-Control: no-cache
 }
 ```
 
-**Invalid Deletion:**
+**Invalid Request:**
 
 ```json
 {

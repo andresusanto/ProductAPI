@@ -20,8 +20,6 @@ This resource creates a product by using specified parameters.
 | `categories` | Array of ObjectID. **Required (min 1)** | Categories of the products |
 
 
-**Note:** if none supplied (empty string or `{}`), it would yield all products.
-
 #### Example Request
 ```http
 PUT /product HTTP/1.1

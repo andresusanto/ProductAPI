@@ -6,6 +6,8 @@
 
 'use strict';
 
+var async = require('async');
+
 var Category = require('../models/category');
 var Product = require('../models/product');
 
@@ -15,8 +17,26 @@ const messages = require('../constants/messages');
 module.exports = {
 
     findCategories : function (req, res){
-        Category.find({}, function(err, result){
-            res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS, categories: result});
+        Category.find({parent: undefined}, function(err, categories){
+            // promises that is used for retrieving all categories's children
+            var categoryPromises = [];
+
+            categories.forEach(function(category){ // for each categories (root)
+
+                categoryPromises.push(function(categoryCb){ // create promise
+                    category.getChildren(function(children){ // retrieve the children
+                        category.children = children;
+                        categoryCb(null, category);
+                    });
+                });
+
+            });
+
+            // executed after all promises done
+            async.parallel(categoryPromises, function (err, result){
+                res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS, categories: categories});
+            });
+
         });
     },
 

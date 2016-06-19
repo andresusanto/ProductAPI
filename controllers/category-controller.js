@@ -16,6 +16,17 @@ const messages = require('../constants/messages');
 
 module.exports = {
 
+    // this will clean all categories in databases. no validation is performed.
+    cleanUp : function(req, res){
+        Category.remove({}, function(err){
+            if (err){
+                res.send({code: codes.OPERATION_ERROR, message: messages.OPERATION_ERROR, errors: err});
+            }else{
+                res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS});
+            }
+        });
+    },
+
     findCategories : function (req, res){
         Category.find({parent: undefined}, function(err, categories){
             // promises that is used for retrieving all categories's children

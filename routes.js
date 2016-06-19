@@ -25,6 +25,7 @@ router.put('/product', productController.createProduct);
 router.post('/product/:productId', productController.updateProduct);
 router.delete('/product/:productId', productController.deleteProduct);
 router.get('/product/:productId', productController.getProductById);
+router.get('/products/cleanup', productController.cleanUp);
 
 
 // routes of categories
@@ -34,5 +35,6 @@ router.post('/category/:categoryId', categoryController.updateCategory);
 router.delete('/category/:categoryId', categoryController.deleteCategory);
 router.get('/category/:categoryId', categoryController.getCategoryById);
 router.get('/category/:categoryId/products', categoryController.getCategoryProducts);
+router.get('/categories/cleanup', categoryController.cleanUp);
 
 module.exports = router;

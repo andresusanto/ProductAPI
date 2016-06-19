@@ -14,6 +14,7 @@ describe('Category Endpoints', function() {
 
     var test_categories = []; // contains IDs of root categories (would be used in other tests)
     var test_product_id = undefined; // contains test product id that is used in test
+    
 
     // Test endpoint that creates categories
     describe('PUT /category', function() {

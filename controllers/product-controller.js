@@ -14,6 +14,17 @@ const messages = require('../constants/messages');
 
 module.exports = {
 
+    // this will clean all categories in databases. no validation is performed.
+    cleanUp : function(req, res){
+        Product.remove({}, function(err){
+            if (err){
+                res.send({code: codes.OPERATION_ERROR, message: messages.OPERATION_ERROR, errors: err});
+            }else{
+                res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS});
+            }
+        });
+    },
+
     findProducts : function (req, res){
 
         // query handling for size, color, and category

@@ -28,3 +28,14 @@ All resources related to categories.
 5. [DELETE /category/:categoryId](categories/deleteCategory.md) - Delete a category
 6. [GET /category/:categoryId/products](categories/getCategoryProducts.md) - Get products inside a category
 7. [GET /categories/cleanup](categories/cleanUp.md) - **Clean all categories in database**
+
+## Products
+All resources related to categories.
+
+1. [POST /products](products/findProducts.md) - Get products that match criterion or all products.
+2. [PUT /product](products/createProduct.md) - Create a new product
+3. [GET /product/:productId](products/getProductById.md) - Get a product that is specified by product id.
+4. [POST /product/:productId](products/updateProduct.md) - Update a product that is specified by product id.
+5. [DELETE /product/:productId](products/deleteProduct.md) - Delete a product
+6. [GET /products/cleanup](products/cleanUp.md) - **Clean all products in database**
+

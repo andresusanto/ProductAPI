@@ -13,8 +13,8 @@ This resource returns products that is specified by search criterion or **all pr
 | Name | Type | Description
 | --- | --- | --- |
 | `sizes` | Array of String enum, valid values are ('XS', 'S', 'M', 'L', 'XL', 'XXL'). **Optional** | Sizes of the product (support multiple value search) |
-| `colors` | Array of String. **Optional** | Colors of the products (support multiple value search |
-| `categories` | Array of ObjectID. **Optional** | Categories of the products (support multiple value search |
+| `colors` | Array of String. **Optional** | Colors of the products (support multiple value search) |
+| `categories` | Array of ObjectID. **Optional** | Categories of the products (support multiple value search) |
 | `price.min` | Numeric. **Optional** | Minimum price of the product. |
 | `price.max` | Numeric. **Optional** | Maximum price of the product. |
 

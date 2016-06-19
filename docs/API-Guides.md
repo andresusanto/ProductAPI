@@ -30,7 +30,7 @@ All resources related to categories.
 7. [GET /categories/cleanup](categories/cleanUp.md) - **Clean all categories in database**
 
 ## Products
-All resources related to categories.
+All resources related to products.
 
 1. [POST /products](products/findProducts.md) - Get products that match criterion or all products.
 2. [PUT /product](products/createProduct.md) - Create a new product

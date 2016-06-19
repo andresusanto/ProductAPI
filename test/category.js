@@ -262,7 +262,8 @@ describe('Category Endpoints', function() {
 
     // Test endpoint that retreive categories
     describe('GET /category/:categoryId', function() {
-        it('should retreive category with valid ID #1', function(done) {
+
+        it('should retreive category with a child, a grand children and a grand grand children', function(done) {
             request(config.HTTP_ADDRESS)
                 .get('/category/' + test_categories[0]) // the first root category we've created before
                 .set('API-KEY', config.TEST_VALID_API_KEY)
@@ -277,13 +278,17 @@ describe('Category Endpoints', function() {
                     res.body.category.name.should.equal('Celana');
                     res.body.category.should.not.have.property('parent');
 
+                    res.body.category.children[0]._id.should.equal(test_categories[2]); // children
+                    res.body.category.children[0].children[0]._id.should.equal(test_categories[4]); // grand children
+                    res.body.category.children[0].children[0].children[0]._id.should.equal(test_categories[5]); // grand grand children
+
                     return done();
                 });
         });
 
-        it('should retreive category with valid ID #2', function(done) {
+        it('should retreive category with no children', function(done) {
             request(config.HTTP_ADDRESS)
-                .get('/category/' + test_categories[5]) // the first root category we've created before
+                .get('/category/' + test_categories[5])
                 .set('API-KEY', config.TEST_VALID_API_KEY)
                 .expect(200)
                 .end(function (err, res) {
@@ -295,6 +300,11 @@ describe('Category Endpoints', function() {
                     res.body.category.description.should.equal('Koleksi jeans merek levis yang dibuat di USA');
                     res.body.category.name.should.equal('Jeans Levis USA');
                     res.body.category.parent.should.equal(test_categories[4]);
+
+                    res.body.category.should.have.property('children').with.lengthOf(0);
+
+                    console.log(JSON.stringify(res.body));
+
 
                     return done();
                 });

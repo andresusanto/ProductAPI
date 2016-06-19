@@ -89,7 +89,10 @@ module.exports = {
             if (err) {
                 res.status(500).send({code: codes.OPERATION_ERROR, message: messages.OPERATION_ERROR, errors: err});
             } else if (category){
-                res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS, category: category});
+                category.getChildren(function (children) {
+                    category.children = children;
+                    res.send({code: codes.OPERATION_SUCCESS, message: messages.OPERATION_SUCCESS, category: category});
+                })
             }else{
                 // reference error as we can't find the requested category
                 res.status(400).send({code: codes.REFERENCE_ERROR, message: messages.REFERENCE_ERROR});

@@ -303,9 +303,6 @@ describe('Category Endpoints', function() {
 
                     res.body.category.should.have.property('children').with.lengthOf(0);
 
-                    console.log(JSON.stringify(res.body));
-
-
                     return done();
                 });
         });
